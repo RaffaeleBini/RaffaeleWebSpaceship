@@ -1,0 +1,43 @@
+:root {
+  --bg: #06070a;
+  --panel: #08090c;
+  --fg: #c9ced3;
+  --dim: #7e838a;
+  --faint: #4e5257;
+  --amber: #f5b913;
+  --amberSoft: rgba(245, 185, 19, 0.55);
+  --line: rgba(245, 185, 19, 0.13);
+  --glow: rgba(245, 185, 19, 0.13);
+  --planet1: #4a380b;
+  --planet2: #171205;
+  --planet3: #08090c;
+  --scrim: rgba(4, 5, 7, 0.72);
+  --veil: linear-gradient(
+    90deg,
+    rgba(6, 7, 10, 0) 0%,
+    rgba(6, 7, 10, 0.82) 20%,
+    rgba(6, 7, 10, 0.94) 46%
+  );
+}
+
+:root[data-theme="light"] {
+  --bg: #eaebed;
+  --panel: #f3f4f5;
+  --fg: #26292d;
+  --dim: #5c6268;
+  --faint: #9ea4aa;
+  --amber: #a8690a;
+  --amberSoft: rgba(168, 105, 10, 0.6);
+  --line: rgba(168, 105, 10, 0.2);
+  --glow: rgba(168, 105, 10, 0.09);
+  --planet1: #bfa76f;
+  --planet2: #dcd4be;
+  --planet3: #eaebed;
+  --scrim: rgba(214, 216, 219, 0.78);
+  --veil: linear-gradient(
+    90deg,
+    rgba(234, 235, 237, 0) 0%,
+    rgba(234, 235, 237, 0.88) 20%,
+    rgba(234, 235, 237, 0.97) 46%
+  );
+}

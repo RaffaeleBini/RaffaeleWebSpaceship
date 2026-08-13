@@ -5,21 +5,22 @@ import Home from "../sections/Home";
 import About from "../sections/About";
 import Skills from "../sections/Skills";
 import Experience from "../sections/Experience";
+import Projects from "../sections/Projects";
 import type { PortfolioContent } from "@/lib/content";
 
 interface ViewportProps {
   section: SectionId;
   content: PortfolioContent;
   onNavigate: (id: SectionId) => void;
+  onOpenDossier: (slug: string) => void;
 }
 
 const PLACEHOLDER_BLOCK: Partial<Record<SectionId, string>> = {
-  projects: "Blocco 4",
   contact: "Blocco 5",
   log: "fase 2",
 };
 
-export default function Viewport({ section, content, onNavigate }: ViewportProps) {
+export default function Viewport({ section, content, onNavigate, onOpenDossier }: ViewportProps) {
   const active = SECTIONS.find((s) => s.id === section) ?? SECTIONS[0];
 
   return (
@@ -36,6 +37,9 @@ export default function Viewport({ section, content, onNavigate }: ViewportProps
         {section === "about" && <About content={content.about} />}
         {section === "skills" && <Skills content={content.skills} />}
         {section === "experience" && <Experience content={content.experience} />}
+        {section === "projects" && (
+          <Projects projects={content.projects} onOpen={onOpenDossier} />
+        )}
         {PLACEHOLDER_BLOCK[section] && (
           <p className={styles.viewportPlaceholder}>
             Sezione &ldquo;{active.label}&rdquo; in arrivo — {PLACEHOLDER_BLOCK[section]}.

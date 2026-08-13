@@ -6,6 +6,7 @@ import StatusBar from "./StatusBar";
 import NavRail from "./NavRail";
 import Viewport from "./Viewport";
 import SidePanels from "./SidePanels";
+import Dossier from "./Dossier";
 import type { SectionId } from "./sections";
 import type { PortfolioContent } from "@/lib/content";
 
@@ -21,11 +22,33 @@ export default function Hud({ content }: HudProps) {
   const [section, setSection] = useState<SectionId>("home");
   const [theme, setTheme] = useState<Theme>("dark");
   const [panel, setPanel] = useState(0);
+  const [dossier, setDossier] = useState<string | null>(null);
 
   useEffect(() => {
     const current = document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
     setTheme(current);
   }, []);
+
+  useEffect(() => {
+    if (!dossier) return;
+
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") setDossier(null);
+    }
+    function blockScroll(e: Event) {
+      e.preventDefault();
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+    window.addEventListener("wheel", blockScroll, { passive: false });
+    window.addEventListener("touchmove", blockScroll, { passive: false });
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("wheel", blockScroll);
+      window.removeEventListener("touchmove", blockScroll);
+    };
+  }, [dossier]);
 
   function toggleTheme() {
     setTheme((prev) => {
@@ -60,9 +83,21 @@ export default function Hud({ content }: HudProps) {
 
       <div className={styles.main}>
         <NavRail section={section} onSelect={setSection} />
-        <Viewport section={section} content={content} onNavigate={setSection} />
+        <Viewport
+          section={section}
+          content={content}
+          onNavigate={setSection}
+          onOpenDossier={setDossier}
+        />
         <SidePanels section={section} panel={panel} onPrevPanel={prevPanel} onNextPanel={nextPanel} />
       </div>
+
+      {dossier && (
+        <Dossier
+          project={content.projects.find((p) => p.slug === dossier)!}
+          onClose={() => setDossier(null)}
+        />
+      )}
 
       <div className={styles.footer}>
         <span>© 2026 RAFFAELE BINI</span>

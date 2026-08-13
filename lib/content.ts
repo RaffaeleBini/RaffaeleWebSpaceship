@@ -69,10 +69,51 @@ export function getExperienceContent(locale = "en"): ExperienceContent {
   };
 }
 
+export interface Project {
+  slug: string;
+  code: string;
+  title: string;
+  short: string;
+  tech: string;
+  impact: string;
+  status: string;
+  image: string;
+  detailTech: string[];
+  detailImpact: string[];
+  bodyHtml: string;
+}
+
+export function getProjectsContent(locale = "en"): Project[] {
+  const dir = path.join(CONTENT_DIR, locale, "projects");
+  const slugs = fs.readdirSync(dir).filter((f) => f.endsWith(".md"));
+
+  const projects = slugs.map((file) => {
+    const slug = file.replace(/\.md$/, "");
+    const raw = fs.readFileSync(path.join(dir, file), "utf8");
+    const { data, content } = matter(raw);
+    return {
+      slug,
+      code: data.code as string,
+      title: data.title as string,
+      short: data.short as string,
+      tech: data.tech as string,
+      impact: data.impact as string,
+      status: data.status as string,
+      image: data.image as string,
+      detailTech: data.detailTech as string[],
+      detailImpact: data.detailImpact as string[],
+      bodyHtml: renderMarkdown(content),
+    };
+  });
+
+  return projects.sort((a, b) => a.code.localeCompare(b.code));
+}
+
 export interface PortfolioContent {
   about: AboutContent;
   skills: SkillsContent;
   experience: ExperienceContent;
+  projects: Project[];
 }
 
 export function getPortfolioContent(locale = "en"): PortfolioContent {
@@ -80,5 +121,6 @@ export function getPortfolioContent(locale = "en"): PortfolioContent {
     about: getAboutContent(locale),
     skills: getSkillsContent(locale),
     experience: getExperienceContent(locale),
+    projects: getProjectsContent(locale),
   };
 }

@@ -417,12 +417,15 @@
   mask-image: radial-gradient(ellipse at center, #000 40%, transparent 76%);
 }
 
-.shipNavPlaceholder {
-  position: relative;
-  font-family: var(--font-jetbrains-mono), monospace;
-  font-size: 11px;
-  letter-spacing: 0.2em;
-  color: var(--faint);
+.shipSvg {
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .shipSvg {
+    transition: none;
+  }
 }
 
 .shipNavLabel {

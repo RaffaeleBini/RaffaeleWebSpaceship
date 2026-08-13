@@ -6,6 +6,7 @@ import About from "../sections/About";
 import Skills from "../sections/Skills";
 import Experience from "../sections/Experience";
 import Projects from "../sections/Projects";
+import Contact from "../sections/Contact";
 import type { PortfolioContent } from "@/lib/content";
 
 interface ViewportProps {
@@ -16,7 +17,6 @@ interface ViewportProps {
 }
 
 const PLACEHOLDER_BLOCK: Partial<Record<SectionId, string>> = {
-  contact: "Blocco 5",
   log: "fase 2",
 };
 
@@ -40,6 +40,7 @@ export default function Viewport({ section, content, onNavigate, onOpenDossier }
         {section === "projects" && (
           <Projects projects={content.projects} onOpen={onOpenDossier} />
         )}
+        {section === "contact" && <Contact />}
         {PLACEHOLDER_BLOCK[section] && (
           <p className={styles.viewportPlaceholder}>
             Sezione &ldquo;{active.label}&rdquo; in arrivo — {PLACEHOLDER_BLOCK[section]}.

@@ -7,12 +7,17 @@ import NavRail from "./NavRail";
 import Viewport from "./Viewport";
 import SidePanels from "./SidePanels";
 import type { SectionId } from "./sections";
+import type { PortfolioContent } from "@/lib/content";
 
 type Theme = "dark" | "light";
 
 const PANEL_COUNT = 3;
 
-export default function Hud() {
+interface HudProps {
+  content: PortfolioContent;
+}
+
+export default function Hud({ content }: HudProps) {
   const [section, setSection] = useState<SectionId>("home");
   const [theme, setTheme] = useState<Theme>("dark");
   const [panel, setPanel] = useState(0);
@@ -55,7 +60,7 @@ export default function Hud() {
 
       <div className={styles.main}>
         <NavRail section={section} onSelect={setSection} />
-        <Viewport section={section} />
+        <Viewport section={section} content={content} onNavigate={setSection} />
         <SidePanels section={section} panel={panel} onPrevPanel={prevPanel} onNextPanel={nextPanel} />
       </div>
 

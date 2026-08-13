@@ -1,0 +1,25 @@
+---
+title: "SYSTEMS & CAPABILITIES"
+items:
+  - label: "LEAN & OPERATIONS"
+    value: "95%"
+  - label: "DIGITAL TRANSFORMATION"
+    value: "90%"
+  - label: "FRONTEND (VUE / REACT)"
+    value: "85%"
+  - label: "BACKEND & DATA"
+    value: "75%"
+  - label: "SUSTAINABILITY STRATEGY"
+    value: "85%"
+  - label: "TRAINING & FACILITATION"
+    value: "90%"
+toolbox:
+  - "VUE 3"
+  - "REACT"
+  - "TYPESCRIPT"
+  - "NODE.JS"
+  - "PHP"
+  - "MYSQL"
+  - "ASTRO"
+  - "FIGMA"
+---

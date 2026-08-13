@@ -14,7 +14,7 @@ const orbitron = Orbitron({
 
 const rajdhani = Rajdhani({
   variable: "--font-rajdhani",
-  weight: ["300", "400", "500"],
+  weight: ["300", "400", "500", "600"],
   subsets: ["latin"],
 });
 

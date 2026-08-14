@@ -29,6 +29,14 @@ Alla radice esiste `rb-system-tokens.json`, il design system di brand più ampio
 - **Griglia/spaziatura** (gap 8px, padding 12px, griglia 12 colonne) e **testo minimo 16px** del JSON: **non applicati**, resta la spaziatura specifica del portfolio HUD (griglia 3 colonne `250px 1fr 258px` gap 28px, microtipografia mono fino a 8.5px) — deviazione intenzionale confermata dall'utente.
 - Logo (`public/images/logo.png`), icone e tono di voce del JSON: nessun conflitto rilevato / non ancora applicabili, nessuna modifica necessaria.
 
+## Contrasto testo (post-deploy, verificato dall'utente su schermo reale)
+Tre correzioni ai token colore, tutte verificate con calcolo del rapporto WCAG (formula luminanza relativa) e con screenshot prima/dopo:
+- `--dim` (tema dark): `#7e838a` → `#999fa8` (5.28:1 → 7.56:1 su `--bg`). I paragrafi in Rajdhani peso 300 risultavano poco leggibili nell'uso reale nonostante il vecchio valore passasse la soglia WCAG AA (4.5:1) — il peso sottile del font e la sovrapposizione con il bagliore ambra dello sfondo (pianeta) riducono il contrasto percepito oltre quanto dice il calcolo su sfondo piatto.
+- `--faint` (tema dark): `#4e5257` → `#767c86` (2.56:1 → 4.79:1). Usato per le etichette mono piccole (NAVIGATION, TELEMETRY, TOOLBOX, ecc.) — restano visivamente più tenui di `--dim` (differenza di luminosità preservata) ma ora sopra soglia AA anche loro.
+- `--amber` (tema light) + le sue derivate `--amberSoft`/`--line`/`--glow`: `#a8690a` → `#8a5407` (3.44:1 → 4.81:1 su `--bg`). Era già al limite nel design originale (3.75:1 sul vecchio `--bg` più chiaro) e sotto soglia AA per testo normale — usato non solo nei titoli grandi (dove basterebbe 3:1) ma anche per valori/percentuali/numeri piccoli. Il tema **dark** non è stato toccato (il suo amber, `#efcd00`, era già a 12.86:1).
+
+Se in futuro si cambia ancora un colore di sfondo o di testo, verificare sempre il contrasto risultante con lo stesso metodo (calcolo luminanza relativa, non solo "a occhio" su uno screenshot) prima di considerare la modifica conclusa — un valore che sembra leggibile in uno screenshot isolato può risultare insufficiente su schermi reali o in overlay su sfondi non piatti (es. il pianeta).
+
 ## Struttura file
 ```
 app/                        # layout.tsx (font + tokens.css), page.tsx

@@ -2,8 +2,8 @@
   --bg: #06070a;
   --panel: #08090c;
   --fg: #c9ced3;
-  --dim: #7e838a;
-  --faint: #4e5257;
+  --dim: #999fa8;
+  --faint: #767c86;
   --amber: #efcd00;
   --amberSoft: rgba(239, 205, 0, 0.55);
   --line: rgba(239, 205, 0, 0.13);
@@ -27,10 +27,10 @@
   --fg: #26292d;
   --dim: #5c6268;
   --faint: #9ea4aa;
-  --amber: #a8690a;
-  --amberSoft: rgba(168, 105, 10, 0.6);
-  --line: rgba(168, 105, 10, 0.2);
-  --glow: rgba(168, 105, 10, 0.09);
+  --amber: #8a5407;
+  --amberSoft: rgba(138, 84, 7, 0.6);
+  --line: rgba(138, 84, 7, 0.2);
+  --glow: rgba(138, 84, 7, 0.09);
   --planet1: #bfa76f;
   --planet2: #dcd4be;
   --planet3: #eaebed;

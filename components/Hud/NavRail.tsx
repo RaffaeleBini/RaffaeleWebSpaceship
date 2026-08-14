@@ -2,18 +2,12 @@
 
 import Image from "next/image";
 import styles from "./hud.module.css";
-import { SECTIONS, type SectionId } from "./sections";
+import { SECTIONS, TELEMETRY, type SectionId } from "./sections";
 
 interface NavRailProps {
   section: SectionId;
   onSelect: (id: SectionId) => void;
 }
-
-const TELEMETRY = [
-  { key: "PROJECTS DELIVERED", value: "21" },
-  { key: "PEOPLE TRAINED", value: "165" },
-  { key: "AVAILABILITY", value: "OPEN" },
-];
 
 export default function NavRail({ section, onSelect }: NavRailProps) {
   return (

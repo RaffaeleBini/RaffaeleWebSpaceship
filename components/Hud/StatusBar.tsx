@@ -35,8 +35,10 @@ export default function StatusBar({ theme, onToggleTheme }: StatusBarProps) {
       <div className={styles.statusCenter}>RAFFAELE BINI · PORTFOLIO v2.0</div>
 
       <div className={styles.statusRight}>
-        <span>MILANO · 45.46°N 9.19°E</span>
-        <span className={styles.amberText}>{clock}</span>
+        <span className={styles.statusMeta}>
+          <span>MILANO · 45.46°N 9.19°E</span>
+          <span className={styles.amberText}>{clock}</span>
+        </span>
         <span className={styles.langSwitch}>
           <span className={styles.langActive}>EN</span>
           <span>IT</span>

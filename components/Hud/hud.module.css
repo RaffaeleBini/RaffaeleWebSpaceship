@@ -643,3 +643,149 @@
   color: var(--fg);
   line-height: 1.9;
 }
+
+/* status bar: mobile-only meta wrapper (location + clock, hidden below 900px) */
+.statusMeta {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* home ship accent (hidden on desktop, shown below 900px inside Home) */
+.shipAccent {
+  display: none;
+}
+
+/* mobile header: compact identity + horizontal nav (hidden on desktop) */
+.mobileHeader {
+  display: none;
+}
+
+.mobileIdentity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mobileLogoBadge {
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--amberSoft);
+  border-radius: var(--radius);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+
+.mobileName {
+  font-family: var(--font-orbitron), sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  color: var(--amber);
+}
+
+.mobileRole {
+  margin-top: 2px;
+  font-family: var(--font-jetbrains-mono), monospace;
+  font-size: 7.5px;
+  letter-spacing: 0.14em;
+  color: var(--dim);
+}
+
+.mobileNavList {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.mobileNavList::-webkit-scrollbar {
+  display: none;
+}
+
+.mobileNavItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+  padding: 0 0 8px;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--dim);
+  font: inherit;
+  cursor: pointer;
+}
+
+.mobileNavItemActive {
+  color: var(--amber);
+  border-bottom-color: var(--amber);
+}
+
+/* ===== mobile layout (below 900px) ===== */
+@media (max-width: 899px) {
+  .hud {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+  }
+
+  .background {
+    position: fixed;
+  }
+
+  .statusBar {
+    justify-content: flex-end;
+    gap: 14px;
+  }
+
+  .statusLeft,
+  .statusCenter,
+  .statusMeta {
+    display: none;
+  }
+
+  .mobileHeader {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .main {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 20px 20px 0;
+  }
+
+  .navRail,
+  .sideCol,
+  .veil {
+    display: none;
+  }
+
+  .viewportBody {
+    overflow-y: visible;
+  }
+
+  .shipAccent {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .footer {
+    padding: 16px 20px;
+  }
+
+  .dossierPanel {
+    width: 92%;
+  }
+
+  .dossierBody {
+    grid-template-columns: 1fr;
+  }
+}

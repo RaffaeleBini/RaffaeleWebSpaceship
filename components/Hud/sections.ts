@@ -53,3 +53,14 @@ export const SHIP_ORIENT: Record<ShipPart, string> = {
   comms: "rotateX(62deg) rotateZ(20deg) scale(1.06)",
   hold: "rotateX(46deg) rotateZ(30deg) scale(1.08)",
 };
+
+export interface TelemetryItem {
+  key: string;
+  value: string;
+}
+
+export const TELEMETRY: TelemetryItem[] = [
+  { key: "PROJECTS DELIVERED", value: "21" },
+  { key: "PEOPLE TRAINED", value: "165" },
+  { key: "AVAILABILITY", value: "OPEN" },
+];

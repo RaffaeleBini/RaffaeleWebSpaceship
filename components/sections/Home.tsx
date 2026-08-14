@@ -1,5 +1,6 @@
 import styles from "./sections.module.css";
-import type { SectionId } from "../Hud/sections";
+import ShipAccent from "../Hud/ShipAccent";
+import { TELEMETRY, type SectionId } from "../Hud/sections";
 
 interface HomeProps {
   onNavigate: (id: SectionId) => void;
@@ -8,6 +9,7 @@ interface HomeProps {
 export default function Home({ onNavigate }: HomeProps) {
   return (
     <div className={styles.home}>
+      <ShipAccent />
       <div className={styles.homeKicker}>HELLO, I&apos;M</div>
       <div className={styles.homeName}>
         RAFFAELE
@@ -27,6 +29,16 @@ export default function Home({ onNavigate }: HomeProps) {
         <button type="button" className={styles.homeCtaSecondary} onClick={() => onNavigate("projects")}>
           VIEW MY WORK
         </button>
+      </div>
+
+      <div className={styles.homeTelemetry}>
+        <div className={styles.homeTelemetryLabel}>TELEMETRY</div>
+        {TELEMETRY.map((t) => (
+          <div key={t.key} className={styles.homeTelemetryRow}>
+            <span>{t.key}</span>
+            <span className={styles.amberText}>{t.value}</span>
+          </div>
+        ))}
       </div>
     </div>
   );

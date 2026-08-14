@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import styles from "./hud.module.css";
 import StatusBar from "./StatusBar";
+import MobileHeader from "./MobileHeader";
 import NavRail from "./NavRail";
 import Viewport from "./Viewport";
 import SidePanels from "./SidePanels";
@@ -80,6 +81,7 @@ export default function Hud({ content }: HudProps) {
       </div>
 
       <StatusBar theme={theme} onToggleTheme={toggleTheme} />
+      <MobileHeader section={section} onSelect={setSection} />
 
       <div className={styles.main}>
         <NavRail section={section} onSelect={setSection} />

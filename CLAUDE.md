@@ -63,7 +63,7 @@ design/                       # bundle di design originale (riferimento, non da 
 - `public/images/logo.png` — logo (badge sidebar in alto a sinistra, al posto del testo "RB" del prototipo)
 - `public/images/about-portrait.png` — ritratto reale per la sezione About
 - `public/images/projects/{refresh-food,chef-hippo,owly-api}.png` — immagini progetto
-- `design/images/RaffaelePortrait.png` e `design/images/RBLogoScuro.png` non sono ancora assegnati a un uso — da chiarire prima di pubblicarli
+- `RaffaelePortrait.png` e `RBLogoScuro.png` (mai usate) rimosse dall'utente
 
 ## Gestione contenuti
 Per ora sorgente unica: Markdown + frontmatter in `content/`, versionato con il codice (nessun servizio esterno, coerente con l'hosting gratuito "hobby" su Vercel). Per rendere sostenibile l'aggiunta/modifica di progetti, esperienza e skill senza toccare il codice, valutare in una fase successiva un editor git-based (es. Decap CMS o TinaCMS) che scrive sugli stessi file Markdown — nessuna migrazione di dati necessaria. Evitare un CRUD custom con database: aggiungerebbe hosting a pagamento e complessità non necessarie per un sito statico personale.

@@ -438,6 +438,11 @@
   border-bottom: 1px solid var(--amber);
 }
 
+.contactInput:focus-visible {
+  outline: none;
+  border-bottom: 2px solid var(--amber);
+}
+
 .contactSubmit {
   align-self: flex-start;
   display: inline-flex;

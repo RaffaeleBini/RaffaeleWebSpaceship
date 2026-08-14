@@ -7,11 +7,12 @@ import { SECTIONS, type SectionId } from "./sections";
 interface MobileHeaderProps {
   section: SectionId;
   onSelect: (id: SectionId) => void;
+  ariaHidden?: boolean;
 }
 
-export default function MobileHeader({ section, onSelect }: MobileHeaderProps) {
+export default function MobileHeader({ section, onSelect, ariaHidden }: MobileHeaderProps) {
   return (
-    <div className={styles.mobileHeader}>
+    <div className={styles.mobileHeader} aria-hidden={ariaHidden || undefined}>
       <div className={styles.mobileIdentity}>
         <div className={styles.mobileLogoBadge}>
           <Image src="/images/logo.png" alt="Raffaele Bini" width={24} height={24} priority />

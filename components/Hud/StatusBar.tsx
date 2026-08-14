@@ -8,6 +8,7 @@ type Theme = "dark" | "light";
 interface StatusBarProps {
   theme: Theme;
   onToggleTheme: () => void;
+  ariaHidden?: boolean;
 }
 
 function formatClock(date: Date): string {
@@ -15,7 +16,7 @@ function formatClock(date: Date): string {
   return `${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;
 }
 
-export default function StatusBar({ theme, onToggleTheme }: StatusBarProps) {
+export default function StatusBar({ theme, onToggleTheme, ariaHidden }: StatusBarProps) {
   const [clock, setClock] = useState("");
 
   useEffect(() => {
@@ -25,7 +26,7 @@ export default function StatusBar({ theme, onToggleTheme }: StatusBarProps) {
   }, []);
 
   return (
-    <div className={styles.statusBar}>
+    <div className={styles.statusBar} aria-hidden={ariaHidden || undefined}>
       <div className={styles.statusLeft}>
         <span className={styles.amberText}>◤</span>
         <span>SYSTEM ONLINE</span>

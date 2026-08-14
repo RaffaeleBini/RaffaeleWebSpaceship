@@ -80,10 +80,10 @@ export default function Hud({ content }: HudProps) {
         <div className={styles.veil} />
       </div>
 
-      <StatusBar theme={theme} onToggleTheme={toggleTheme} />
-      <MobileHeader section={section} onSelect={setSection} />
+      <StatusBar theme={theme} onToggleTheme={toggleTheme} ariaHidden={!!dossier} />
+      <MobileHeader section={section} onSelect={setSection} ariaHidden={!!dossier} />
 
-      <div className={styles.main}>
+      <div className={styles.main} aria-hidden={dossier ? true : undefined}>
         <NavRail section={section} onSelect={setSection} />
         <Viewport
           section={section}
@@ -101,7 +101,7 @@ export default function Hud({ content }: HudProps) {
         />
       )}
 
-      <div className={styles.footer}>
+      <div className={styles.footer} aria-hidden={dossier ? true : undefined}>
         <span>© 2026 RAFFAELE BINI</span>
         <span className={styles.footerLinks}>
           <a href="https://github.com/RaffaeleBini" target="_blank" rel="noreferrer">

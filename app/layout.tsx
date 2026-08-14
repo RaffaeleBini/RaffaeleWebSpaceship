@@ -38,15 +38,15 @@ export const metadata: Metadata = {
     description: SITE_DESCRIPTION,
     url: SITE_URL,
     siteName: SITE_TITLE,
-    images: [{ url: "/images/logo.png", width: 512, height: 512 }],
+    images: [{ url: "/images/og-image.png", width: 1200, height: 630 }],
     locale: "en_US",
     type: "website",
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
-    images: ["/images/logo.png"],
+    images: ["/images/og-image.png"],
   },
 };
 

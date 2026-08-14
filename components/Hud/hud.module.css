@@ -563,8 +563,9 @@
 }
 
 .dossierTitle {
-  margin-top: 12px;
+  margin: 12px 0 0;
   font-family: var(--font-orbitron), sans-serif;
+  font-weight: 400;
   font-size: 30px;
   color: var(--amber);
   letter-spacing: 0.02em;
